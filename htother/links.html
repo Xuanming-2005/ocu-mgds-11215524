@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>網址專區 | 創意與分享的空間</title>
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #6c757d;
+            --accent-color: #f6c23e;
+            --success-color: #1cc88a;
+            --info-color: #36b9cc;
+            --warning-color: #f6c23e;
+            --danger-color: #e74a3b;
+            --light-color: #f8f9fc;
+            --dark-color: #5a5c69;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 76px;
+            background-color: #f8f9fc;
+            color: #333;
+        }
+        
+        .navbar {
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .footer {
+            background-color: #4e73df;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .section-card {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .card-header-primary {
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            color: white;
+        }
+        
+        .card-header-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+        }
+        
+        .card-header-accent {
+            background: linear-gradient(135deg, #f6c23e 0%, #e0a800 100%);
+            color: white;
+        }
+        
+        .card-header-success {
+            background: linear-gradient(135deg, #1cc88a 0%, #13855c 100%);
+            color: white;
+        }
+        
+        .card-header-warning {
+            background: linear-gradient(135deg, #f6c23e 0%, #dda20a 100%);
+            color: #333;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: #4e73df;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #4e73df;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer .social-icons a {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .footer .social-icons a:hover {
+            background-color: white;
+            color: #4e73df;
+        }
+        
+        .link-item {
+            transition: all 0.3s ease;
+            border-radius: 0.25rem;
+            padding: 0.5rem;
+        }
+        
+        .link-item:hover {
+            background-color: rgba(78, 115, 223, 0.1);
+            transform: translateX(5px);
+        }
+        
+        .link-item a {
+            color: #4e73df;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .link-item a:hover {
+            color: #224abe;
+        }
+        
+        .link-item i {
+            margin-right: 0.5rem;
+            color: #4e73df;
+        }
+    </style>
+</head>
+<body>
+    <!-- 現代化導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><i class="bi bi-house-heart-fill me-2"></i>我的空間</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house me-1"></i>首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="links.html"><i class="bi bi-link-45deg me-1"></i>網址專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="comments.html"><i class="bi bi-chat-dots me-1"></i>留言區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="memories.html"><i class="bi bi-journal-richtext me-1"></i>回憶點滴錄</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- 網址專區主要內容 -->
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="section-card mb-5" data-aos="fade-up">
+                    <div class="card-header-primary">
+                        <h2><i class="bi bi-link-45deg me-2"></i>網址專區</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- 添加新網址表單 -->
+                        <div class="mb-5">
+                            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#addLinkForm">
+                                <i class="bi bi-plus-circle me-2"></i>添加新網址
+                            </button>
+                            <div class="collapse" id="addLinkForm">
+                                <div class="card card-body">
+                                    <form id="linkForm">
+                                        <div class="mb-3">
+                                            <label for="siteName" class="form-label">網站名稱</label>
+                                            <input type="text" class="form-control" id="siteName" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="siteUrl" class="form-label">網址</label>
+                                            <input type="url" class="form-control" id="siteUrl" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="siteDescription" class="form-label">描述</label>
+                                            <textarea class="form-control" id="siteDescription" rows="2"></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="siteCategory" class="form-label">分類</label>
+                                            <select class="form-select" id="siteCategory">
+                                                <option value="學習資源">學習資源</option>
+                                                <option value="娛樂">娛樂</option>
+                                                <option value="工具">工具</option>
+                                                <option value="社交媒體">社交媒體</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">保存</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 分類標籤 -->
+                        <div class="mb-4">
+                            <div class="d-flex flex-wrap" id="categoryFilters">
+                                <button class="btn btn-outline-primary me-2 mb-2 active" data-category="all">全部</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-category="學習資源">學習資源</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-category="娛樂">娛樂</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-category="工具">工具</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-category="社交媒體">社交媒體</button>
+                                <button class="btn btn-outline-primary me-2 mb-2" data-category="其他">其他</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 網址列表 -->
+                        <div id="linksContainer">
+                            <div class="text-center py-4" id="linksLoading">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 頁腳 -->
+    <footer class="footer mt-5 py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>© 2023 我的個人網站 | 創意與分享的空間</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-icons">
+                        <a href="https://facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="https://instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
+                        <a href="https://youtube.com" target="_blank"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // 為了確保導覽列固定後不會遮擋內容
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.paddingTop = '70px';
+            
+            // 使用localStorage存儲網址數據
+            function getLinks() {
+                const linksJSON = localStorage.getItem('links');
+                return linksJSON ? JSON.parse(linksJSON) : [];
+            }
+            
+            function saveLink(link) {
+                const links = getLinks();
+                links.push(link);
+                localStorage.setItem('links', JSON.stringify(links));
+            }
+            
+            // 顯示網址
+            function displayLinks() {
+                const links = getLinks();
+                const linksContainer = document.getElementById('linksContainer');
+                
+                // 隱藏加載指示器
+                document.getElementById('linksLoading').style.display = 'none';
+                
+                if (links.length === 0) {
+                    linksContainer.innerHTML = '<p class="text-center">暫無網址</p>';
+                    return;
+                }
+                
+                // 按分類組織網址
+                const categorizedLinks = {};
+                links.forEach(link => {
+                    if (!categorizedLinks[link.category]) {
+                        categorizedLinks[link.category] = [];
+                    }
+                    categorizedLinks[link.category].push(link);
+                });
+                
+                let linksHTML = '';
+                for (const category in categorizedLinks) {
+                    linksHTML += `
+                        <div class="card mb-4">
+                            <div class="card-header bg-light">
+                                <h4>${category}</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                    `;
+                    
+                    categorizedLinks[category].forEach(link => {
+                        linksHTML += `
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${link.name}</h5>
+                                        <p class="card-text">${link.description || '無描述'}</p>
+                                        <a href="${link.url}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-box-arrow-up-right"></i> 訪問網站
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    linksHTML += `
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                linksContainer.innerHTML = linksHTML;
+            }
+            
+            // 頁面加載時顯示網址
+            displayLinks();
+            
+            // 提交網址
+            document.getElementById('linkForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('siteName').value;
+                const url = document.getElementById('siteUrl').value;
+                const description = document.getElementById('siteDescription').value;
+                const category = document.getElementById('siteCategory').value;
+                
+                // 禁用提交按鈕
+                const submitButton = this.querySelector('button[type="submit"]');
+                submitButton.disabled = true;
+                submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 提交中...';
+                
+                // 創建新網址
+                const newLink = {
+                    name,
+                    url,
+                    description,
+                    category,
+                    created_at: new Date().toISOString()
+                };
+                
+                // 保存到localStorage
+                saveLink(newLink);
+                
+                // 重置表單
+                document.getElementById('linkForm').reset();
+                
+                // 重新顯示網址
+                displayLinks();
+                
+                // 恢復提交按鈕
+                submitButton.disabled = false;
+                submitButton.innerHTML = '保存';
+                
+                // 關閉折疊表單
+                bootstrap.Collapse.getInstance(document.getElementById('addLinkForm')).hide();
+                
+                // 顯示成功消息
+                alert('網址添加成功！');
+            });
+            
+            // 分類過濾功能
+            const filterButtons = document.querySelectorAll('#categoryFilters button');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // 移除所有按鈕的active類
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // 添加當前按鈕的active類
+                    this.classList.add('active');
+                    
+                    const category = this.getAttribute('data-category');
+                    filterLinksByCategory(category);
+                });
+            });
+            
+            function filterLinksByCategory(category) {
+                const links = getLinks();
+                const linksContainer = document.getElementById('linksContainer');
+                
+                if (links.length === 0) {
+                    linksContainer.innerHTML = '<p class="text-center">暫無網址</p>';
+                    return;
+                }
+                
+                let filteredLinks = links;
+                if (category !== 'all') {
+                    filteredLinks = links.filter(link => link.category === category);
+                }
+                
+                if (filteredLinks.length === 0) {
+                    linksContainer.innerHTML = `<p class="text-center">沒有${category}分類的網址</p>`;
+                    return;
+                }
+                
+                // 按分類組織網址
+                const categorizedLinks = {};
+                filteredLinks.forEach(link => {
+                    if (!categorizedLinks[link.category]) {
+                        categorizedLinks[link.category] = [];
+                    }
+                    categorizedLinks[link.category].push(link);
+                });
+                
+                let linksHTML = '';
+                for (const cat in categorizedLinks) {
+                    linksHTML += `
+                        <div class="card mb-4">
+                            <div class="card-header bg-light">
+                                <h4>${cat}</h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                    `;
+                    
+                    categorizedLinks[cat].forEach(link => {
+                        linksHTML += `
+                            <div class="col-md-6 mb-3">
+                                <div class="card h-100">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${link.name}</h5>
+                                        <p class="card-text">${link.description || '無描述'}</p>
+                                        <a href="${link.url}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                            <i class="bi bi-box-arrow-up-right"></i> 訪問網站
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    linksHTML += `
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                linksContainer.innerHTML = linksHTML;
+            }
+        });
+    </script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</body>
+</html>

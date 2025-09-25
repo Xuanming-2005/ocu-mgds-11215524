@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>回憶點滴錄 | 創意與分享的空間</title>
+    <style>
+        :root {
+            --primary-color: #4e73df;
+            --secondary-color: #6c757d;
+            --accent-color: #f6c23e;
+            --success-color: #1cc88a;
+            --info-color: #36b9cc;
+            --warning-color: #f6c23e;
+            --danger-color: #e74a3b;
+            --light-color: #f8f9fc;
+            --dark-color: #5a5c69;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding-top: 76px;
+            background-color: #f8f9fc;
+            color: #333;
+        }
+        
+        .navbar {
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .footer {
+            background-color: #4e73df;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .section-card {
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.15);
+        }
+        
+        .card-header-primary {
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            color: white;
+        }
+        
+        .card-header-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+        }
+        
+        .card-header-accent {
+            background: linear-gradient(135deg, #f6c23e 0%, #e0a800 100%);
+            color: white;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: #4e73df;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-icons a:hover {
+            background-color: #4e73df;
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .footer .social-icons a {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        
+        .footer .social-icons a:hover {
+            background-color: white;
+            color: #4e73df;
+        }
+        
+        .memory-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: none;
+            border-radius: 0.5rem;
+            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.1);
+        }
+        
+        .memory-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .memory-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .memory-card:hover .memory-img {
+            transform: scale(1.05);
+        }
+        
+        .memory-date {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.6);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .memory-date i {
+            margin-right: 0.5rem;
+        }
+        
+        .memory-tags {
+            margin-top: 10px;
+        }
+        
+        .memory-tag {
+            display: inline-block;
+            background-color: #f8f9fa;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            color: #6c757d;
+            border: 1px solid #dee2e6;
+        }
+        
+        .memory-tag:hover {
+            background-color: #e9ecef;
+            cursor: pointer;
+        }
+        
+        .filter-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 現代化導航欄 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html"><i class="bi bi-house-heart-fill me-2"></i>我的空間</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html"><i class="bi bi-house me-1"></i>首頁</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="links.html"><i class="bi bi-link-45deg me-1"></i>網址專區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="comments.html"><i class="bi bi-chat-dots me-1"></i>留言區</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="memories.html"><i class="bi bi-journal-richtext me-1"></i>回憶點滴錄</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container mt-5 pt-5">
+        <div class="row">
+            <div class="col-lg-10 mx-auto">
+                <div class="section-card mb-5" data-aos="fade-up">
+                    <div class="card-header-primary">
+                        <h2><i class="bi bi-journal-richtext me-2"></i>回憶點滴錄</h2>
+                    </div>
+                    <div class="card-body">
+                        <!-- 添加新回憶表單 -->
+                        <div class="mb-5">
+                            <button class="btn btn-primary mb-3" type="button" data-bs-toggle="collapse" data-bs-target="#addMemoryForm">
+                                <i class="bi bi-plus-circle me-2"></i>添加新回憶
+                            </button>
+                            <div class="collapse" id="addMemoryForm">
+                                <div class="card card-body">
+                                    <form id="memoryForm">
+                                        <div class="mb-3">
+                                            <label for="title" class="form-label">標題</label>
+                                            <input type="text" class="form-control" id="title" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="date" class="form-label">日期</label>
+                                            <input type="date" class="form-control" id="date">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="content" class="form-label">內容</label>
+                                            <textarea class="form-control" id="content" rows="4" required></textarea>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="image_url" class="form-label">圖片連結 (選填)</label>
+                                            <input type="url" class="form-control" id="image_url" placeholder="https://example.com/image.jpg">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="tags" class="form-label">標籤 (用逗號分隔)</label>
+                                            <input type="text" class="form-control" id="tags" placeholder="例如：旅行,家庭,朋友">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">保存回憶</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+        
+        <!-- 回憶卡片區域 -->
+        <div class="row" id="memoriesContainer">
+            <!-- 回憶卡片 1 -->
+            <div class="col-md-4">
+                <div class="card memory-card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/id/1015/600/400" class="card-img-top memory-img" alt="山景">
+                        <div class="memory-date">2023-05-15</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">阿里山日出之旅</h5>
+                        <p class="card-text">清晨4點起床，搭乘小火車前往祝山觀日平台，等待日出的過程雖然寒冷，但當第一道陽光灑落在雲海上的那一刻，一切都值得了。</p>
+                        <div class="memory-tags">
+                            <span class="memory-tag">旅行</span>
+                            <span class="memory-tag">阿里山</span>
+                            <span class="memory-tag">日出</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-heart me-1"></i>收藏</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回憶卡片 2 -->
+            <div class="col-md-4">
+                <div class="card memory-card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/id/1025/600/400" class="card-img-top memory-img" alt="與寵物的合照">
+                        <div class="memory-date">2023-04-22</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">毛小孩的生日派對</h5>
+                        <p class="card-text">今天是我家毛小孩Lucky的三歲生日，特地為牠準備了狗狗蛋糕和新玩具，看著牠開心的樣子，我們全家都很幸福。</p>
+                        <div class="memory-tags">
+                            <span class="memory-tag">家庭</span>
+                            <span class="memory-tag">寵物</span>
+                            <span class="memory-tag">生日</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-heart-fill me-1 text-danger"></i>已收藏</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回憶卡片 3 -->
+            <div class="col-md-4">
+                <div class="card memory-card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/id/225/600/400" class="card-img-top memory-img" alt="畢業典禮">
+                        <div class="memory-date">2022-06-10</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">大學畢業典禮</h5>
+                        <p class="card-text">四年的大學生活在今天畫下句點，和同學們一起拍照、丟帽子，感謝這段時光讓我成長，也結交了一群好朋友。</p>
+                        <div class="memory-tags">
+                            <span class="memory-tag">學校</span>
+                            <span class="memory-tag">畢業</span>
+                            <span class="memory-tag">朋友</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-heart me-1"></i>收藏</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回憶卡片 4 -->
+            <div class="col-md-4">
+                <div class="card memory-card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/id/304/600/400" class="card-img-top memory-img" alt="咖啡廳">
+                        <div class="memory-date">2022-03-18</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">老友聚會</h5>
+                        <p class="card-text">和高中好友們在我們常去的咖啡廳聚會，雖然各自在不同的城市發展，但友情依然如初，聊了整整一個下午。</p>
+                        <div class="memory-tags">
+                            <span class="memory-tag">朋友</span>
+                            <span class="memory-tag">聚會</span>
+                            <span class="memory-tag">咖啡廳</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-heart me-1"></i>收藏</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回憶卡片 5 -->
+            <div class="col-md-4">
+                <div class="card memory-card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/id/366/600/400" class="card-img-top memory-img" alt="辦公室慶祝">
+                        <div class="memory-date">2021-12-25</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">公司聖誕派對</h5>
+                        <p class="card-text">今年的公司聖誕派對很特別，每個人都準備了一個小禮物進行交換，我抽到了主管送的限量版咖啡杯，超幸運！</p>
+                        <div class="memory-tags">
+                            <span class="memory-tag">工作</span>
+                            <span class="memory-tag">聖誕節</span>
+                            <span class="memory-tag">派對</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-heart-fill me-1 text-danger"></i>已收藏</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 回憶卡片 6 -->
+            <div class="col-md-4">
+                <div class="card memory-card">
+                    <div class="position-relative">
+                        <img src="https://picsum.photos/id/429/600/400" class="card-img-top memory-img" alt="海邊">
+                        <div class="memory-date">2021-08-07</div>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">墾丁夏日之旅</h5>
+                        <p class="card-text">和家人一起到墾丁度假，白天在海邊游泳、玩沙，晚上逛夜市，享受美食和海風，是一次完美的夏日旅行。</p>
+                        <div class="memory-tags">
+                            <span class="memory-tag">旅行</span>
+                            <span class="memory-tag">家庭</span>
+                            <span class="memory-tag">墾丁</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <button class="btn btn-sm btn-outline-primary"><i class="bi bi-heart me-1"></i>收藏</button>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 分頁 -->
+        <nav aria-label="回憶分頁" class="my-5">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">上一頁</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">下一頁</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    
+    <!-- 添加新回憶的模態框 -->
+    <div class="modal fade" id="addMemoryModal" tabindex="-1" aria-labelledby="addMemoryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addMemoryModalLabel">添加新回憶</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newMemoryForm">
+                        <div class="mb-3">
+                            <label for="memoryTitle" class="form-label">標題</label>
+                            <input type="text" class="form-control" id="memoryTitle" placeholder="為這個回憶取個標題" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="memoryDate" class="form-label">日期</label>
+                            <input type="date" class="form-control" id="memoryDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="memoryCategory" class="form-label">分類</label>
+                            <select class="form-select" id="memoryCategory" required>
+                                <option value="" selected disabled>選擇分類...</option>
+                                <option value="旅行">旅行</option>
+                                <option value="家庭">家庭</option>
+                                <option value="朋友">朋友</option>
+                                <option value="學校">學校</option>
+                                <option value="工作">工作</option>
+                                <option value="其他">其他</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="memoryDescription" class="form-label">描述</label>
+                            <textarea class="form-control" id="memoryDescription" rows="4" placeholder="描述這個回憶..." required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="memoryImages" class="form-label">上傳圖片</label>
+                            <input class="form-control" type="file" id="memoryImages" multiple accept="image/*">
+                            <div class="form-text">可以選擇多張圖片</div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="memoryTags" class="form-label">標籤</label>
+                            <input type="text" class="form-control" id="memoryTags" placeholder="輸入標籤，用逗號分隔">
+                            <div class="form-text">例如：旅行,阿里山,日出</div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="memoryFavorite">
+                            <label class="form-check-label" for="memoryFavorite">加入收藏</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" id="saveMemoryBtn">保存回憶</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 初始化AOS動畫
+        AOS.init({
+            duration: 800,
+            once: true
+        });
+        
+        // 為了確保導覽列固定後不會遮擋內容
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.style.paddingTop = '70px';
+            
+            // 使用localStorage存儲回憶數據
+            function getMemories() {
+                const memoriesJSON = localStorage.getItem('memories');
+                return memoriesJSON ? JSON.parse(memoriesJSON) : [];
+            }
+            
+            function saveMemory(memory) {
+                const memories = getMemories();
+                memories.push(memory);
+                localStorage.setItem('memories', JSON.stringify(memories));
+            }
+            
+            // 顯示回憶
+            function displayMemories() {
+                const memories = getMemories();
+                const memoriesContainer = document.getElementById('memoriesContainer');
+                
+                if (memories.length === 0) {
+                    memoriesContainer.innerHTML = '<p class="text-center mt-4">暫無回憶，點擊「添加新回憶」開始記錄吧！</p>';
+                    return;
+                }
+                
+                // 按日期排序，最新的在前面
+                memories.sort((a, b) => new Date(b.date) - new Date(a.date));
+                
+                // 清空容器
+                memoriesContainer.innerHTML = '';
+                
+                // 創建回憶卡片
+                memories.forEach(memory => {
+                    const col = document.createElement('div');
+                    col.className = 'col-md-4';
+                    col.setAttribute('data-aos', 'fade-up');
+                    
+                    const tags = memory.tags ? memory.tags.split(',').map(tag => 
+                        `<span class="memory-tag">${tag.trim()}</span>`
+                    ).join('') : '';
+                    
+                    col.innerHTML = `
+                        <div class="card memory-card">
+                            <div class="position-relative">
+                                <img src="${memory.image_url || 'https://picsum.photos/id/1015/600/400'}" class="card-img-top memory-img" alt="${memory.title}">
+                                <div class="memory-date">${memory.date}</div>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">${memory.title}</h5>
+                                <p class="card-text">${memory.content}</p>
+                                <div class="memory-tags">
+                                    ${tags}
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <button class="btn btn-sm btn-outline-primary"><i class="bi bi-heart me-1"></i>收藏</button>
+                                    <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-three-dots"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    memoriesContainer.appendChild(col);
+                });
+            }
+            
+            // 頁面加載時顯示回憶
+            displayMemories();
+            
+            // 提交回憶表單
+            document.getElementById('memoryForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const title = document.getElementById('title').value;
+                const date = document.getElementById('date').value;
+                const content = document.getElementById('content').value;
+                const image_url = document.getElementById('image_url').value;
+                const tags = document.getElementById('tags').value;
+                
+                // 創建新回憶
+                const newMemory = {
+                    title,
+                    date,
+                    content,
+                    image_url,
+                    tags,
+                    created_at: new Date().toISOString()
+                };
+                
+                // 保存到localStorage
+                saveMemory(newMemory);
+                
+                // 重置表單
+                this.reset();
+                
+                // 關閉折疊面板
+                const bsCollapse = bootstrap.Collapse.getInstance(document.getElementById('addMemoryForm'));
+                bsCollapse.hide();
+                
+                // 重新顯示回憶
+                displayMemories();
+                
+                // 顯示成功消息
+                alert('回憶添加成功！');
+            });
+        });
+    </script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+</body>
+</html>
