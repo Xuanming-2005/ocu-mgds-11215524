@@ -1,412 +1,152 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant">
 <head>
-    <!-- Required meta tags -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS and JS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <!-- AOS Animation Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <title>我的個人網站</title>
-    <style>
-        :root {
-            --primary-color: #4e73df;
-            --secondary-color: #1cc88a;
-            --accent-color: #f6c23e;
-            --dark-color: #5a5c69;
-            --light-color: #f8f9fc;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-color);
-            color: #333;
-            padding-top: 70px;
-        }
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-        .profile-img {
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease;
-        }
-        .profile-img:hover {
-            transform: scale(1.03);
-        }
-        .section-card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            margin-bottom: 30px;
-            border: none;
-        }
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        .card-header-primary {
-            background-color: var(--primary-color);
-            color: white;
-            border-bottom: none;
-        }
-        .card-header-secondary {
-            background-color: var(--secondary-color);
-            color: white;
-            border-bottom: none;
-        }
-        .card-header-accent {
-            background-color: var(--accent-color);
-            color: white;
-            border-bottom: none;
-        }
-        .feature-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-        }
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        .btn-primary:hover {
-            background-color: #3a5ccc;
-            border-color: #3a5ccc;
-        }
-        .social-icons {
-            font-size: 1.5rem;
-        }
-        .social-icons a {
-            color: var(--dark-color);
-            margin: 0 10px;
-            transition: color 0.3s ease;
-        }
-        .social-icons a:hover {
-            color: var(--primary-color);
-        }
-        .interest-tag {
-            display: inline-block;
-            background-color: var(--light-color);
-            color: var(--dark-color);
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 0.9rem;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-        .interest-tag:hover {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        .navbar {
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .navbar-brand {
-            font-weight: bold;
-            color: var(--primary-color) !important;
-        }
-        .nav-link {
-            font-weight: 500;
-        }
-        .nav-link:hover {
-            color: var(--primary-color) !important;
-        }
-        .footer {
-            background-color: #343a40;
-            color: white;
-            padding: 30px 0;
-            margin-top: 30px;
-        }
-        .progress-bar {
-            background-color: var(--primary-color);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="我的個人網站 - 分享創意、生活回憶與實用資源">
+  <meta name="keywords" content="個人網站, 網頁設計, 留言區, 回憶錄, 作品集">
+  <meta name="author" content="你的名字">
+  <title>我的個人網站</title>
+  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 現代化導航欄 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html"><i class="bi bi-house-heart-fill me-2"></i>我的空間</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="../index.html"><i class="bi bi-house me-1"></i>首頁</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="htother/links.html"><i class="bi bi-link-45deg me-1"></i>網址專區</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="htother/comments.html"><i class="bi bi-chat-dots me-1"></i>留言區</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="htother/memories.html"><i class="bi bi-journal-richtext me-1"></i>回憶點滴錄</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- 主要內容 -->
-    <div class="container">     
-        <!-- 英雄區塊 -->
-        <div class="row hero-section py-5 px-3 mb-5" data-aos="fade-up">
-            <div class="col-md-4 d-flex align-items-center justify-content-center">
-                <img src="img/image01.jpg" class="img-fluid profile-img" alt="個人頭像">
-            </div>
-            <div class="col-md-8 d-flex flex-column justify-content-center py-4">
-                <h1 class="display-4 fw-bold mb-3">歡迎來到我的個人空間</h1>
-                <p class="lead mb-4">
-                    害羞又善於融入，追求卓越的學習者，熱愛郊遊、游泳與健身，立志成為世界上的那顆星。
-                </p>
-                <div class="d-flex">
-                    <a href="#about" class="btn btn-light me-3"><i class="bi bi-person-fill me-2"></i>了解更多</a>
-                    <a href="htother/comments.html" class="btn btn-primary"><i class="bi bi-chat-text-fill me-2"></i>與我聯繫</a>
-                </div>
-            </div>
-        </div>
-
-        <!-- 功能區塊 -->
-        <div class="row mb-5" data-aos="fade-up" data-aos-delay="100">
-            <div class="col-12 text-center mb-4">
-                <h2 class="fw-bold">探索我的網站</h2>
-                <p class="text-muted">發現更多有趣的功能和內容</p>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card section-card h-100">
-                    <div class="card-body text-center p-4">
-                        <i class="bi bi-link-45deg feature-icon"></i>
-                        <h3 class="card-title mb-3">實用網址</h3>
-                        <p class="card-text">收集了各種實用的網站資源，包括學習平台、工具網站和社群媒體等。</p>
-                        <a href="links.html" class="btn btn-outline-primary mt-3">瀏覽網址(未開放)</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card section-card h-100">
-                    <div class="card-body text-center p-4">
-                        <i class="bi bi-chat-dots feature-icon"></i>
-                        <h3 class="card-title mb-3">留言互動</h3>
-                        <p class="card-text">歡迎在留言區分享您的想法、提問或建議，我會盡快回覆您的訊息。</p>
-                        <a href="comments.html" class="btn btn-outline-primary mt-3">前往留言(未開放)</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card section-card h-100">
-                    <div class="card-body text-center p-4">
-                        <i class="bi bi-journal-richtext feature-icon"></i>
-                        <h3 class="card-title mb-3">回憶點滴</h3>
-                        <p class="card-text">記錄生活中的精彩瞬間，分享我的故事、經歷和感悟。</p>
-                        <a href="memories.html" class="btn btn-outline-primary mt-3">查看回憶(未開放)</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 關於我區塊 -->
-        <div class="row mb-5" id="about" data-aos="fade-up" data-aos-delay="200">
-            <div class="col-12 mb-4">
-                <div class="card section-card">
-                    <div class="card-header card-header-primary py-3">
-                        <h3 class="mb-0"><i class="bi bi-person-fill me-2"></i>關於我</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <p class="lead">
-                            我是一個充滿好奇心和創造力的人，喜歡探索新事物，分享知識和經驗。
-                            透過這個網站，一起成長和進步。
-                        </p>
-                        <div class="row mt-4">
-                            <div class="col-md-6">
-                                <h4 class="mb-3">我的興趣</h4>
-                                <div class="mb-3">
-                                    <span class="interest-tag"><i class="bi bi-dribbble me-1"></i>運動</span>
-                                    <span class="interest-tag"><i class="bi bi-book me-1"></i>閱讀</span>
-                                    <span class="interest-tag"><i class="bi bi-airplane me-1"></i>旅行</span>
-                                    <span class="interest-tag"><i class="bi bi-camera me-1"></i>攝影</span>
-                                    <span class="interest-tag"><i class="bi bi-music-note-beamed me-1"></i>音樂</span>
-                                    <span class="interest-tag"><i class="bi bi-code-slash me-1"></i>編程</span>
-                                </div>
-                                <p>
-                                    我熱愛學習。閱讀是我獲取知識的重要途徑。
-                                    旅行讓我開闊視野，了解不同的創作和生活方式。
-                                </p>
-                            </div>
-                            <div class="col-md-6">
-                                <h4 class="mb-3">專業技能</h4>
-                                <div class="mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <span>網頁設計</span>
-                                        <span>42%</span>
-                                    </div>
-                                    <div class="progress" style="height: 10px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <span>專題企劃</span>
-                                        <span>34%</span>
-                                    </div>
-                                    <div class="progress" style="height: 10px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                                <div class="mb-2">
-                                    <div class="d-flex justify-content-between">
-                                        <span>影視編輯</span>
-                                        <span>48%</span>
-                                    </div>
-                                    <div class="progress" style="height: 10px;">
-                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 最新動態區塊 -->
-        <div class="row mb-5" data-aos="fade-up" data-aos-delay="300">
-            <div class="col-12 mb-4">
-                <div class="card section-card">
-                    <div class="card-header card-header-secondary py-3">
-                        <h3 class="mb-0"><i class="bi bi-newspaper me-2"></i>最新動態</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <img src="img/image02.jpg" class="card-img-top" alt="最新動態圖片">
-                                    <div class="card-body">
-                                        <h5 class="card-title">網站全新改版上線</h5>
-                                        <p class="card-text">網站進行了全面的改版，採用了更現代化的設計，提供更好的用戶體驗。</p>
-                                        <p class="text-muted"><small><i class="bi bi-calendar3 me-2"></i>2023年10月15日</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6 mb-4">
-                                <div class="card h-100">
-                                    <div class="card-body">
-                                        <h5 class="card-title">新增網址專區功能</h5>
-                                        <p class="card-text">網址專區新增了更多實用的網站資源，包括學習平台、工具網站和社群媒體等。</p>
-                                        <p class="text-muted"><small><i class="bi bi-calendar3 me-2"></i>2023年10月10日</small></p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 聯繫我區塊 -->
-        <div class="row mb-5" data-aos="fade-up" data-aos-delay="400">
-            <div class="col-12 mb-4">
-                <div class="card section-card">
-                    <div class="card-header card-header-accent py-3">
-                        <h3 class="mb-0"><i class="bi bi-envelope-fill me-2"></i>聯繫我</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="row">
-                            <div class="col-md-6 mb-4 mb-md-0">
-                                <h4 class="mb-3">保持聯繫</h4>
-                                <p>如果您有任何問題、建議或合作意向，歡迎隨時與我聯繫。</p>
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="bi bi-envelope me-2"></i>Email: example@example.com</li>
-                                    <li class="mb-2"><i class="bi bi-telephone me-2"></i>電話: (02) 1234-5678</li>
-                                    <li class="mb-2"><i class="bi bi-geo-alt me-2"></i>地址: 台灣台北市</li>
-                                </ul>
-                                <div class="social-icons mt-4">
-                                    <a href="https://www.facebook.com" target="_blank"><i class="bi bi-facebook"></i></a>
-                                    <a href="https://www.instagram.com" target="_blank"><i class="bi bi-instagram"></i></a>
-                                    <a href="https://www.youtube.com" target="_blank"><i class="bi bi-youtube"></i></a>
-                                    <a href="https://www.linkedin.com" target="_blank"><i class="bi bi-linkedin"></i></a>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <h4 class="mb-3">快速留言</h4>
-                                <form>
-                                    <div class="mb-3">
-                                        <input type="text" class="form-control" placeholder="您的姓名">
-                                    </div>
-                                    <div class="mb-3">
-                                        <input type="email" class="form-control" placeholder="您的Email">
-                                    </div>
-                                    <div class="mb-3">
-                                        <textarea class="form-control" rows="3" placeholder="您的留言"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">發送留言</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">個人網站</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="index.html">首頁</a></li>
+          <li class="nav-item"><a class="nav-link" href="htother/links.html">實用網址</a></li>
+          <li class="nav-item"><a class="nav-link" href="htother/comments.html">留言區</a></li>
+          <li class="nav-item"><a class="nav-link" href="htother/memories.html">回憶錄</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <!-- 頁腳 -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4>我的個人網站</h4>
-                    <p>這是一個分享知識、經驗和創意的空間。感謝您的訪問！</p>
-                </div>
-                <div class="col-md-3">
-                    <h5>快速連結</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white">首頁</a></li>
-                        <li><a href="links.html" class="text-white">網址專區</a></li>
-                        <li><a href="comments.html" class="text-white">留言區</a></li>
-                        <li><a href="memories.html" class="text-white">回憶點滴錄</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h5>關注我</h5>
-                    <div class="social-icons">
-                        <a href="https://www.facebook.com" target="_blank" class="text-white"><i class="bi bi-facebook"></i></a>
-                        <a href="https://www.instagram.com" target="_blank" class="text-white"><i class="bi bi-instagram"></i></a>
-                        <a href="https://www.youtube.com" target="_blank" class="text-white"><i class="bi bi-youtube"></i></a>
-                    </div>
-                </div>
+  <!-- Hero 區塊 -->
+  <header class="hero bg-dark text-white text-center d-flex align-items-center justify-content-center">
+    <div data-aos="fade-up">
+      <h1 class="display-3">歡迎來到我的個人網站</h1>
+      <p class="lead">探索我的世界，發現更多精彩內容！</p>
+      <a href="#about" class="btn btn-primary btn-lg">了解更多</a>
+    </div>
+  </header>
+
+  <!-- 功能區塊 -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-md-4 mb-4" data-aos="zoom-in">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">實用網址</h5>
+              <p class="card-text">收集各種常用工具與資源，方便快速查找。</p>
+              <a href="htother/links.html" class="btn btn-outline-primary">前往查看</a>
             </div>
-            <hr class="bg-light">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="mb-0">© 2023 我的個人網站. All Rights Reserved.</p>
-                </div>
-            </div>
+          </div>
         </div>
-    </footer>
-    
-    <script>
-        // 初始化AOS動畫庫
-        document.addEventListener('DOMContentLoaded', function() {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-in-out',
-                once: true
-            });
-        });
-    </script>
+        <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">留言區</h5>
+              <p class="card-text">分享你的想法，與我互動交流。</p>
+              <a href="htother/comments.html" class="btn btn-outline-primary">立即留言</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4" data-aos="zoom-in" data-aos-delay="400">
+          <div class="card h-100 shadow-sm">
+            <div class="card-body">
+              <h5 class="card-title">回憶錄</h5>
+              <p class="card-text">紀錄點滴，保存美好時光。</p>
+              <a href="htother/memories.html" class="btn btn-outline-primary">開始回顧</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 關於我 -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container" data-aos="fade-right">
+      <h2 class="mb-4">關於我</h2>
+      <p>這裡放你的自我介紹，描述興趣、技能與目標。</p>
+    </div>
+  </section>
+
+  <!-- 技能 -->
+  <section class="py-5">
+    <div class="container" data-aos="fade-left">
+      <h2 class="mb-4">我的技能</h2>
+      <div class="mb-3">
+        <label>HTML/CSS</label>
+        <div class="progress"><div class="progress-bar bg-success" style="width: 90%"></div></div>
+      </div>
+      <div class="mb-3">
+        <label>JavaScript</label>
+        <div class="progress"><div class="progress-bar bg-info" style="width: 75%"></div></div>
+      </div>
+      <div class="mb-3">
+        <label>設計</label>
+        <div class="progress"><div class="progress-bar bg-warning" style="width: 65%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新動態 -->
+  <section class="py-5 bg-light">
+    <div class="container" data-aos="fade-up">
+      <h2 class="mb-4">最新動態</h2>
+      <ul>
+        <li>網站上線 - 2025/09/25</li>
+        <li>新增留言區 - 2025/09/26</li>
+        <li>回憶錄開放 - 2025/09/27</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 聯繫我 -->
+  <section class="py-5">
+    <div class="container" data-aos="fade-up">
+      <h2 class="mb-4">聯繫我</h2>
+      <form>
+        <div class="mb-3">
+          <label for="name" class="form-label">名字</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">電子郵件</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="message" class="form-label">留言</label>
+          <textarea class="form-control" id="message" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">發送留言</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 頁腳 -->
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2025 我的個人網站 | 
+      <a href="htother/links.html" class="text-white">實用網址</a> | 
+      <a href="htother/comments.html" class="text-white">留言區</a> | 
+      <a href="htother/memories.html" class="text-white">回憶錄</a>
+    </p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
-
 </html>
-
-
